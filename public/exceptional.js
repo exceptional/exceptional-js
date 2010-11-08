@@ -6,11 +6,10 @@ var Exceptional = {
       console.log(document)
       var request = document.createElement('iframe');
       var protocol_version = 5;
-      var backtrace_string = 'no backtrace';
       request.style.width   = '1px';
       request.style.height  = '1px';
       request.style.display = 'none';
-      var url     = 'http://' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + escape(msg) + '&url=' + escape(url) + '&line=' + escape(line) + '&api_key=' + Exceptional.KEY + '&backtrace=' + backtrace_string;
+      var url     = 'http://' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + escape(msg) + '&url=' + escape(url) + '&line=' + escape(line) + '&api_key=' + Exceptional.KEY;
       request.src = url;
       if (document.body) {
         document.body.appendChild(request);
