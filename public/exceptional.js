@@ -3,7 +3,6 @@ var Exceptional = {
   HOST : 'api.getexceptional.com',
   handle: function (msg,url,line) {
     if (Exceptional.KEY) {
-      console.log(document)
       var request = document.createElement('iframe');
       var protocol_version = 5;
       request.style.width   = '1px';
