@@ -3,9 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title></title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-  <link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
-  <script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="https://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
   <script type="text/javascript" src="exceptional.js"></script>
   <script>
     $(document).ready(function(){
@@ -44,7 +44,7 @@
 
       test("Exceptional.handle", function() {
         if (document.location.protocol == "https:") {
-          Exceptional.setHost('exceptional-js.heroku.com');
+          Exceptional.setHost('exceptional-api.heroku.com');
           equals( Exceptional.handle('msg','url','line'), 'https://exceptional-js.heroku.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
         } else{
           equals( Exceptional.handle('msg','url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
