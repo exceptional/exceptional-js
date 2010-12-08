@@ -8,7 +8,7 @@ var Exceptional = {
       request.style.width   = '1px';
       request.style.height  = '1px';
       request.style.display = 'none';
-      var api_url     = 'http://' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + escape(msg) + '&url=' + escape(url) + '&line=' + escape(line) + '&api_key=' + Exceptional.KEY;
+      var api_url     = document.location.protocol + '//' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + escape(msg) + '&url=' + escape(url) + '&line=' + escape(line) + '&api_key=' + Exceptional.KEY;
       request.src = api_url;
       if (document.body) {
         document.body.appendChild(request);
