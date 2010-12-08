@@ -19,14 +19,14 @@
 
       test("Exceptional.HOST", function() {
         equals( Exceptional.HOST, 'api.getexceptional.com');
-        host = 'my.domain.com'
+        host = 'my.domain.com';
         Exceptional.setHost(host);
         equals( Exceptional.HOST, host);
       });
 
       test("Exceptional.KEY", function() {
         equals( Exceptional.KEY, null);
-        key = 'abcd'
+        key = 'abcd';
         Exceptional.setKey(key);
         equals( Exceptional.KEY, key);
       });
@@ -37,6 +37,7 @@
           Exceptional.setKey('abcd');
         },
         teardown: function() {
+          Exceptional.setHost('api.getexceptional.com');
           Exceptional.setKey(null);
         }
       });

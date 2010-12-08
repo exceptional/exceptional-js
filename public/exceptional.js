@@ -18,8 +18,6 @@ var Exceptional = {
         });
       };
       
-    } else{
-      log('Exceptional.KEY is not set!')
     };
     return api_url;
   },
@@ -29,7 +27,7 @@ var Exceptional = {
   setHost: function (host) {
     Exceptional.HOST = host;
   }
-}
+};
 
 window.onerror = function(msg, url, line) {
   Exceptional.handle(msg,url,line);
@@ -46,9 +44,6 @@ function addLoadEvent(func) {
         oldonload();
       }
       func();
-    }
+    };
   }
 }
-
-// from Paul Irish : http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
-window.log=function(){log.history=log.history||[];log.history.push(arguments);if(this.console){console.log(Array.prototype.slice.call(arguments))}};
