@@ -42,7 +42,12 @@
       });
 
       test("Exceptional.handle", function() {
-        equals( Exceptional.handle('msg','url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
+        if (document.location.protocol == "https:") {
+          Exceptional.setHost('exceptional-js.heroku.com');
+          equals( Exceptional.handle('msg','url','line'), 'https://exceptional-js.heroku.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
+        } else{
+          equals( Exceptional.handle('msg','url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
+        };
       });
 
     });
