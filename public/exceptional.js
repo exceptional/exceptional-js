@@ -21,7 +21,7 @@ var Exceptional = {
     } else{
       log('Exceptional.KEY is not set!')
     };
-    return true;
+    return api_url;
   },
   setKey: function (key) {
     Exceptional.KEY = key;

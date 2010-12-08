@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title></title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+  <script type="text/javascript" src="exceptional.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      module('General', {
+        teardown: function() {
+          Exceptional.setKey(null);
+        }
+      });
+      
+
+      test("Exceptional.HOST", function() {
+        equals( Exceptional.HOST, 'api.getexceptional.com');
+        host = 'my.domain.com'
+        Exceptional.setHost(host);
+        equals( Exceptional.HOST, host);
+      });
+
+      test("Exceptional.KEY", function() {
+        equals( Exceptional.KEY, null);
+        key = 'abcd'
+        Exceptional.setKey(key);
+        equals( Exceptional.KEY, key);
+      });
+
+      module('Exceptional.handle', {
+        setup: function() {
+          Exceptional.setHost('api.getexceptional.com');
+          Exceptional.setKey('abcd');
+        },
+        teardown: function() {
+          Exceptional.setKey(null);
+        }
+      });
+
+      test("Exceptional.handle", function() {
+        equals( Exceptional.handle('msg','url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=msg&url=url&line=line&api_key=abcd');
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <h1 id="qunit-header"></h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">
+    <!-- my test markup goes here -->
+  </div>
+</body>
+</html>
