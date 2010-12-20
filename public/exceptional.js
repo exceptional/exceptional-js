@@ -1,6 +1,7 @@
 var Exceptional = {
   KEY : null,
   HOST : 'api.getexceptional.com',
+  action : '',
   handle: function (msg,url,line) {
     if (Exceptional.KEY) {
       var request = document.createElement('iframe');
@@ -8,7 +9,7 @@ var Exceptional = {
       request.style.width   = '1px';
       request.style.height  = '1px';
       request.style.display = 'none';
-      var api_url     = document.location.protocol + '//' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + Exceptional.customEscape(msg) + '&url=' + Exceptional.customEscape(url) + '&line=' + Exceptional.customEscape(line) + '&api_key=' + Exceptional.KEY;
+      var api_url     = document.location.protocol + '//' + Exceptional.HOST + '/api/errors/new?protocol_version=' + protocol_version + '&msg=' + Exceptional.customEscape(msg) + '&url=' + Exceptional.customEscape(url) + '&line=' + Exceptional.customEscape(line) + '&api_key=' + Exceptional.KEY + '&customaction=' + Exceptional.customEscape(Exceptional.action);
       request.src = api_url;
       if (document.body) {
         document.body.appendChild(request);
@@ -26,6 +27,9 @@ var Exceptional = {
   },
   setHost: function (host) {
     Exceptional.HOST = host;
+  },
+  setAction: function (action) {
+    Exceptional.action = action;
   },
   customEscape: function (escape_me) {
     if (typeof(escape_me) == "object") {

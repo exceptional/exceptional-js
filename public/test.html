@@ -49,11 +49,12 @@
       });
 
       test("Exceptional.handle", function() {
+        Exceptional.setAction('blogController#show');
         if (document.location.protocol == "https:") {
           Exceptional.setHost('exceptional-api.heroku.com');
-          equals( Exceptional.handle({errorMsg:'a long message'},'url','line'), 'https://exceptional-api.heroku.com/api/errors/new?protocol_version=5&msg=%7B%22errorMsg%22%3A%22a%20long%20message%22%7D&url=url&line=line&api_key=abcd');
+          equals( Exceptional.handle({errorMsg:'a long message'},'url','line'), 'https://exceptional-api.heroku.com/api/errors/new?protocol_version=5&msg=%7B%22errorMsg%22%3A%22a%20long%20message%22%7D&url=url&line=line&api_key=abcd&customaction=blogController%23show');
         } else{
-          equals( Exceptional.handle({errorMsg:'a long message'},'url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=%7B%22errorMsg%22%3A%22a%20long%20message%22%7D&url=url&line=line&api_key=abcd');
+          equals( Exceptional.handle({errorMsg:'a long message'},'url','line'), 'http://api.getexceptional.com/api/errors/new?protocol_version=5&msg=%7B%22errorMsg%22%3A%22a%20long%20message%22%7D&url=url&line=line&api_key=abcd&customaction=blogController%23show');
         };
       });
 
